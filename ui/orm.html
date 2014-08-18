@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>ORM</h1>
+                <?php
+
+                    if($result)
+                    {
+                        foreach($result as $DATA)
+                        {
+                            echo $DATA['id'] . ') ' . $DATA['name'] . ' => ' . $DATA['val'] . '<br>';
+                        }
+                    }
+
+                ?>
+        </div>
+    </div>
+</div>
