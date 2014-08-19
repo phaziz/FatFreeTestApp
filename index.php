@@ -13,26 +13,26 @@
      * 
      * */
     $f3app -> config('./config/config.ini');
-
+    
     /*
      * 
-     * CLASS AUTOLOADING
+     * CLASS LOADING
      * 
      * */
-    $f3app -> set('AUTOLOAD','./classes/');
+    require_once './classes/orm.php';   // IDIORM ORM
+    require_once './classes/app.php';   // Application Classes
+    require_once './classes/rb.php';    // RedBeanPHP ORM library
+    require_once './lib/log.php';    // RedBeanPHP ORM library
 
     /*
      * 
      * CONFIGURING ORM (IDIORM)
      * 
      * */
-    ORM::configure(array
-        (
-            'connection_string' => 'mysql:host=XXXXX;dbname=XXXXX',
-            'username' => 'XXXXX',
-            'password' => 'XXXXX'
-        )
-    );
+    ORM::configure(array('connection_string' => 'mysql:host=localhost;dbname=XXXXX','username' => 'XXXXX','password' => 'XXXXX'));
+
+    // REDBEANPHP
+    R::setup('mysql:host=localhost;dbname=XXXXX','XXXXX','XXXXX');
 
     /*
      * 
@@ -40,6 +40,7 @@
      * 
      * */
     $f3app -> route('GET /php/info','App->info',10);
+    $f3app -> route('GET /redbean','App->redbean');
     $f3app -> route('GET /orm','App->orm');
     $f3app -> route('GET /ormupdate','App->ormupdate');
     $f3app -> route('GET /','App->displayWorld',10);
@@ -69,3 +70,7 @@
      * 
      * */
     $f3app -> run();
+    
+    // CLOSING REDBEAN
+    R::close();
+    

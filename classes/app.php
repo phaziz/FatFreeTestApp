@@ -39,6 +39,37 @@
 
         /*
          * 
+         * SELECTING DATA USING REDBEANPHP
+         * 
+         * */
+        function redbean($f3app)
+        {
+            $R_DEBUG = $f3app -> get('R_DEBUG');
+
+            if($R_DEBUG == true)
+            {
+                R::debug(TRUE);
+                $logger = new \Log(date('Y-m-d') . '.log');
+                $logger -> write('$R_DEBUG: true.');
+            }
+
+            // $add_test = R::dispense( 'test' );
+            // $add_test -> name = 'AddTest 1';
+            // $add_test -> val = 'AddValue 1';
+            // $add_test_result = R::store( $add_test);
+
+            //$TESTDATA = R::findAll('test');
+            $TESTDATA = R::getAll( 'SELECT * FROM test ORDER BY id ASC;');
+            $FIELDS = R::inspect('test');
+
+            $f3app -> set('result',$TESTDATA);
+            $f3app -> set('tableresult',$FIELDS);
+            
+            echo View::instance() -> render('redbean.html');
+        }
+
+        /*
+         * 
          * SELECTING DATA USING ORM
          * 
          * */

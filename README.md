@@ -1,4 +1,4 @@
 FatFreeTestApp
 ==============
 
-Simple TestApp with Idirom-ORM and FatFree-PHP-Framework.
+Simple TestApp with Idirom-ORM, RedBeanPHP ORM and FatFree-PHP-Framework.

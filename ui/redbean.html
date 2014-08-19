@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>RedBeanPHP</h1>
+                <?php
+
+                    if($result)
+                    {
+                        foreach($result as $DATA)
+                        {
+                            echo $DATA['id'] . ') ' . $DATA['name'] . ' => ' . $DATA['val'] . '<br>';
+                        }
+                    }
+
+                    if($tableresult)
+                    {
+                        echo '<pre>tableresult: <br>';
+                            var_dump($tableresult);
+                        echo '</pre>';
+                    }
+                    else
+                    {
+                        echo '<p>No tableresult...</p>';
+                    }
+
+                ?>
+        </div>
+    </div>
+</div>
